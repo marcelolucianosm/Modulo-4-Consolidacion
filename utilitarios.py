@@ -17,9 +17,16 @@ def guardar(archivo,informacion):
         fichero.close()
         
 def guardar_encabezado(archivo,encabezados):
-    with open(archivo, 'a') as fichero:
-      fichero.write(str(encabezados))
-      fichero.close()
+    existe_archivo=False
+    try:
+        if open(archivo):
+            return
+    except:
+        existe_archivo=True
+        with open(archivo, 'a') as fichero:
+         fichero.write(str(encabezados))
+         fichero.close()
+
 
     
 
@@ -49,8 +56,6 @@ def obtenerListaEncabezados(encabezados):
     return lista_encabezado
 
 def datos_de_diccionario(diccionario,encabezados):
-    
-    #diccionario=[{'marca': 'Toyota', 'modelo': 'Yaris', 'numero_ruedas': 4, 'velocidad': 160, 'cilindrada': 1500}]
     diccionario2 = dict=[diccionario]
     contador=0
     datos = []
@@ -60,10 +65,8 @@ def datos_de_diccionario(diccionario,encabezados):
             contador+=1
             datos.append(_dict[key])
             if contador==largo:
-                #print(datos)
                 contador=0
-                #datos = []
-    #return datos
+
     datos_str = str(datos)
     cadena1       = datos_str.replace("[", "")
     datos_finales = cadena1.replace("]", "")

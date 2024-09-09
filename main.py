@@ -13,7 +13,7 @@ automovilPasajeros1 = AutomovilPasajeros("Ford","Fiesta",4, 180 , 1800,6)
 datos = str(automovilPasajeros1.Ver())
 imprimir(" AutomovilPasajeros1 :", datos)
 
-automovilCarga1 = AutomovilCarga("Chevrolet","Dmax",4, 180 , 2500, 1000)
+automovilCarga1 = AutomovilCarga("Chevrolet","Dmax",4, 180 , 2500, 20000)
 datos = str(automovilCarga1.Ver())
 imprimir(" AutomovilCarga1 :", datos)
 
@@ -44,17 +44,45 @@ datos = " Motocicleta es Instancia con relacion a Motocicleta ",isinstance(motoc
 imprimir(" Clase Motocicleta :",datos)
 
 ####################################################################################################
-guardar_encabezado("vehiculos.csv",obtenerEncabezados(automovil1.__dict__.keys()))
+guardar_encabezado("vehiculos.csv",obtenerEncabezados(automovilPasajeros1.__dict__.keys()))
 
-lista_encabezados = obtenerListaEncabezados(automovil1.__dict__.keys())
+lista_encabezados = obtenerListaEncabezados(automovilPasajeros1.__dict__.keys())
 
-datos_imprimir = datos_de_diccionario(automovil1.__dict__,lista_encabezados)
+datos_imprimir = datos_de_diccionario(automovilPasajeros1.__dict__,lista_encabezados)
+
+guardar("vehiculos.csv",datos_imprimir)
+
+lista_encabezados = obtenerListaEncabezados(automovilCarga1.__dict__.keys())
+
+datos_imprimir = datos_de_diccionario(automovilCarga1.__dict__,lista_encabezados)
 
 guardar("vehiculos.csv",datos_imprimir)
 
 automoviles = recuperar("vehiculos.csv")
 
 for automovil in automoviles:
-    imprimir('',automovil)
+    imprimir('Automoviles ',automovil)
+    #imprimir(" Archivo CSV : ",automovil)
+    
+    
+##################################################################################################
+guardar_encabezado("vehiculos2ruedas.csv",obtenerEncabezados(motocicleta1.__dict__.keys()))
+
+lista_encabezados = obtenerListaEncabezados(motocicleta1.__dict__.keys())
+
+datos_imprimir = datos_de_diccionario(motocicleta1.__dict__,lista_encabezados)
+
+guardar("vehiculos2ruedas.csv",datos_imprimir)
+
+lista_encabezados = obtenerListaEncabezados(bicicleta1.__dict__.keys())
+
+datos_imprimir = datos_de_diccionario(bicicleta1.__dict__,lista_encabezados)
+
+guardar("vehiculos2ruedas.csv",datos_imprimir)
+
+vehiculos2ruedas = recuperar("vehiculos2ruedas.csv")
+
+for vehiculos2r in vehiculos2ruedas:
+    imprimir('Vehiculos 2 Ruedas ',vehiculos2r)
     #imprimir(" Archivo CSV : ",automovil)
 
